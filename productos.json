@@ -1,1 +1,23 @@
-{}
+{
+    "1": {
+        "id": "1",
+        "nombre": "Laptop Lenovo IdeaPad",
+        "descripcion": "Core i5, 16GB RAM, 512GB SSD",
+        "precio": 2450000.0,
+        "cantidad": 6
+    },
+    "2": {
+        "id": "2",
+        "nombre": "Mouse Inalámbrico Logitech",
+        "descripcion": "Óptico ergonómico USB",
+        "precio": 69900.0,
+        "cantidad": 35
+    },
+    "3": {
+        "id": "3",
+        "nombre": "Teclado Mecánico Redragon",
+        "descripcion": "RGB switch azul",
+        "precio": 190000.0,
+        "cantidad": 14
+    }
+}
