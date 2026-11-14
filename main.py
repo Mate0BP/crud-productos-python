@@ -45,7 +45,7 @@ def solicitar_int(mensaje: str) -> int:
 
 def main():
     # Se inicializa con persistencia en 'productos.json'
-    manager = ProductManager(storage_file="productos.json")
+    manager = ProductManager(archivo="productos.json")
 
     while True:
         imprimir_menu()
