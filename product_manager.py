@@ -1,137 +1,117 @@
 """
-Módulo para la gestión CRUD de productos.
-Permite crear, leer, actualizar y eliminar productos con validaciones y
-soporte opcional para persistencia en archivo JSON o almacenamiento en memoria.
+product_manager.py
+Lógica básica para el CRUD de productos.
+Permite crear, consultar, modificar y eliminar productos,
+guardando los datos en un archivo JSON sencillo.
 """
 
 import json
 import os
-from typing import Dict, List, Optional, Any
 
 
 class ProductManager:
-    """Administrador de productos en memoria con opción de persistencia JSON."""
+    def __init__(self, archivo="productos.json"):
+        # Nombre del archivo donde se guardan los productos
+        self.archivo = archivo
+        # Diccionario para almacenar los productos en memoria
+        self.productos = {}
+        # Si el archivo ya existe en la computadora, cargamos los datos
+        self.cargar_datos()
 
-    def __init__(self, storage_file: Optional[str] = None):
-        """
-        Inicializa el gestor.
-        Si storage_file es proporcionado, se cargará y guardará en dicho archivo JSON.
-        De lo contrario, opera 100% en memoria.
-        """
-        self.storage_file = storage_file
-        self.products: Dict[str, Dict[str, Any]] = {}
-        if self.storage_file and os.path.exists(self.storage_file):
-            self._load_from_file()
+    def guardar_datos(self):
+        """Guarda el diccionario de productos en el archivo JSON."""
+        if self.archivo:
+            with open(self.archivo, "w", encoding="utf-8") as f:
+                json.dump(self.productos, f, indent=4, ensure_ascii=False)
 
-    def _save_to_file(self) -> None:
-        """Guarda el estado actual de los productos en el archivo JSON configurado."""
-        if self.storage_file:
-            with open(self.storage_file, "w", encoding="utf-8") as f:
-                json.dump(self.products, f, indent=4, ensure_ascii=False)
-
-    def _load_from_file(self) -> None:
-        """Carga productos desde el archivo JSON configurado."""
-        if self.storage_file and os.path.exists(self.storage_file):
-            with open(self.storage_file, "r", encoding="utf-8") as f:
+    def cargar_datos(self):
+        """Lee el archivo JSON para recuperar los productos guardados."""
+        if self.archivo and os.path.exists(self.archivo):
+            with open(self.archivo, "r", encoding="utf-8") as f:
                 try:
-                    self.products = json.load(f)
-                except json.JSONDecodeError:
-                    self.products = {}
+                    self.productos = json.load(f)
+                except Exception:
+                    self.productos = {}
 
-    def crear_producto(self, id_prod: Any, nombre: str, descripcion: str, precio: float, cantidad: int) -> Dict[str, Any]:
-        """
-        Crea un nuevo producto en el catálogo.
+    def crear_producto(self, id_prod, nombre, descripcion, precio, cantidad):
+        """Agrega un producto nuevo verificando que no esté repetido."""
+        id_texto = str(id_prod).strip()
 
-        Validaciones:
-        - id_prod no debe estar vacío ni repetido.
-        - nombre no debe estar vacío.
-        - precio debe ser mayor o igual a 0.
-        - cantidad debe ser mayor o igual a 0.
-        """
-        prod_id_str = str(id_prod).strip()
-        if not prod_id_str:
-            raise ValueError("El ID del producto no puede estar vacío.")
+        # Validaciones básicas
+        if not id_texto:
+            raise ValueError("El ID no puede estar vacío.")
 
-        if prod_id_str in self.products:
-            raise ValueError(f"Ya existe un producto con el ID '{prod_id_str}'.")
+        if id_texto in self.productos:
+            raise ValueError(f"El producto con ID '{id_texto}' ya existe.")
 
-        if not nombre or not nombre.strip():
-            raise ValueError("El nombre del producto no puede estar vacío.")
+        if not nombre or not str(nombre).strip():
+            raise ValueError("El nombre no puede estar vacío.")
 
-        if precio < 0:
+        if float(precio) < 0:
             raise ValueError("El precio no puede ser negativo.")
 
-        if cantidad < 0:
+        if int(cantidad) < 0:
             raise ValueError("La cantidad no puede ser negativa.")
 
-        nuevo_producto = {
-            "id": prod_id_str,
-            "nombre": nombre.strip(),
-            "descripcion": descripcion.strip() if descripcion else "",
+        # Guardamos el producto con sus campos
+        producto = {
+            "id": id_texto,
+            "nombre": str(nombre).strip(),
+            "descripcion": str(descripcion).strip() if descripcion else "",
             "precio": float(precio),
             "cantidad": int(cantidad)
         }
 
-        self.products[prod_id_str] = nuevo_producto
-        self._save_to_file()
-        return nuevo_producto
+        self.productos[id_texto] = producto
+        self.guardar_datos()
+        return producto
 
-    def obtener_producto(self, id_prod: Any) -> Dict[str, Any]:
-        """Obtiene un producto por su ID. Lanza KeyError si no existe."""
-        prod_id_str = str(id_prod).strip()
-        if prod_id_str not in self.products:
-            raise KeyError(f"Producto con ID '{prod_id_str}' no encontrado.")
-        return self.products[prod_id_str]
+    def obtener_producto(self, id_prod):
+        """Busca un producto por su ID."""
+        id_texto = str(id_prod).strip()
+        if id_texto not in self.productos:
+            raise KeyError(f"No se encontró ningún producto con el ID '{id_texto}'.")
+        return self.productos[id_texto]
 
-    def listar_productos(self) -> List[Dict[str, Any]]:
-        """Retorna una lista con todos los productos registrados."""
-        return list(self.products.values())
+    def listar_productos(self):
+        """Devuelve una lista con todos los productos registrados."""
+        return list(self.productos.values())
 
-    def actualizar_producto(
-        self,
-        id_prod: Any,
-        nombre: Optional[str] = None,
-        descripcion: Optional[str] = None,
-        precio: Optional[float] = None,
-        cantidad: Optional[int] = None
-    ) -> Dict[str, Any]:
-        """
-        Actualiza los campos de un producto existente.
-        Lanza KeyError si el producto no existe o ValueError si los datos son inválidos.
-        """
-        prod_id_str = str(id_prod).strip()
-        if prod_id_str not in self.products:
-            raise KeyError(f"No se puede actualizar: producto con ID '{prod_id_str}' no existe.")
+    def actualizar_producto(self, id_prod, nombre=None, descripcion=None, precio=None, cantidad=None):
+        """Modifica los datos de un producto que ya existe."""
+        id_texto = str(id_prod).strip()
+        if id_texto not in self.productos:
+            raise KeyError(f"No existe el producto con ID '{id_texto}' para actualizar.")
 
-        producto = self.products[prod_id_str]
+        producto = self.productos[id_texto]
 
         if nombre is not None:
-            if not nombre.strip():
-                raise ValueError("El nombre no puede estar vacío.")
-            producto["nombre"] = nombre.strip()
+            if not str(nombre).strip():
+                raise ValueError("El nombre no puede quedar vacío.")
+            producto["nombre"] = str(nombre).strip()
 
         if descripcion is not None:
-            producto["descripcion"] = descripcion.strip()
+            producto["descripcion"] = str(descripcion).strip()
 
         if precio is not None:
-            if precio < 0:
+            if float(precio) < 0:
                 raise ValueError("El precio no puede ser negativo.")
             producto["precio"] = float(precio)
 
         if cantidad is not None:
-            if cantidad < 0:
+            if int(cantidad) < 0:
                 raise ValueError("La cantidad no puede ser negativa.")
             producto["cantidad"] = int(cantidad)
 
-        self._save_to_file()
+        self.guardar_datos()
         return producto
 
-    def eliminar_producto(self, id_prod: Any) -> bool:
-        """Elimina un producto por su ID. Lanza KeyError si no existe."""
-        prod_id_str = str(id_prod).strip()
-        if prod_id_str not in self.products:
-            raise KeyError(f"No se puede eliminar: producto con ID '{prod_id_str}' no existe.")
+    def eliminar_producto(self, id_prod):
+        """Elimina un producto del diccionario y del archivo."""
+        id_texto = str(id_prod).strip()
+        if id_texto not in self.productos:
+            raise KeyError(f"No existe el producto con ID '{id_texto}' para eliminar.")
 
-        del self.products[prod_id_str]
-        self._save_to_file()
+        del self.productos[id_texto]
+        self.guardar_datos()
         return True

@@ -2,69 +2,70 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Informe - Taller Evaluativo 20% - Aplicaciones y Servicios Web</title>
+<title>Taller Evaluativo 20% - Aplicaciones y servicios web</title>
 <style>
   @page {
     size: A4;
-    margin: 20mm 15mm 20mm 15mm;
-  }
-  * {
-    box-sizing: border-box;
+    margin: 20mm 15mm;
   }
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #2c3e50;
-    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+    line-height: 1.5;
     margin: 0;
     padding: 0;
     font-size: 13px;
   }
   .page {
     page-break-after: always;
-    clear: both;
   }
   .page:last-child {
     page-break-after: avoid;
   }
-  .banner {
-    background-color: #0f4c81;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 6px;
-    margin-bottom: 25px;
+  .top-header {
+    border-bottom: 2px solid #2b6cb0;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .banner h1 {
-    margin: 0;
-    font-size: 20px;
+  .top-header .inst {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2b6cb0;
+  }
+  .top-header .materia {
+    font-size: 12px;
+    color: #666;
+  }
+  h1 {
+    font-size: 18px;
+    text-align: center;
+    color: #1a202c;
+    margin: 15px 0 25px 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .banner p {
-    margin: 5px 0 0 0;
-    font-size: 13px;
-    opacity: 0.9;
   }
   h2 {
-    color: #0f4c81;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 6px;
+    font-size: 15px;
+    color: #2b6cb0;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
     margin-top: 20px;
-    font-size: 16px;
   }
   h3 {
-    color: #1e293b;
-    font-size: 14px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-  }
-  p, li {
     font-size: 13px;
+    color: #2d3748;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  p {
+    margin: 8px 0;
     text-align: justify;
   }
   ul, ol {
-    margin-top: 5px;
-    margin-bottom: 12px;
-    padding-left: 20px;
+    margin: 6px 0 12px 18px;
+    padding: 0;
   }
   li {
     margin-bottom: 4px;
@@ -72,93 +73,76 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 12px 0;
     font-size: 12px;
   }
   th, td {
-    border: 1px solid #cbd5e1;
-    padding: 8px 10px;
+    border: 1px solid #cbd5e0;
+    padding: 7px 10px;
+    text-align: left;
   }
   th {
-    background-color: #f1f5f9;
-    color: #0f4c81;
-    font-weight: 600;
+    background-color: #edf2f7;
+    color: #2d3748;
   }
-  .info-table td {
-    padding: 8px 12px;
-  }
-  .info-table td:first-child {
-    font-weight: 600;
-    width: 28%;
-    background-color: #f8fafc;
-    color: #334155;
-  }
-  code {
-    font-family: 'Consolas', 'Courier New', monospace;
-    background-color: #f1f5f9;
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #c026d3;
+  .datos-tabla td:first-child {
+    font-weight: bold;
+    width: 30%;
+    background-color: #f7fafc;
   }
   pre {
-    background-color: #0f172a;
-    color: #f8fafc;
-    padding: 12px 15px;
-    border-radius: 6px;
-    font-family: 'Consolas', monospace;
-    font-size: 11px;
-    line-height: 1.4;
-    overflow-x: auto;
-    margin: 10px 0;
-  }
-  .badge-ok {
-    background-color: #dcfce7;
-    color: #15803d;
-    font-weight: bold;
-    padding: 2px 6px;
+    background-color: #1a202c;
+    color: #f7fafc;
+    padding: 10px;
     border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 11px;
+    overflow-x: auto;
+    margin: 8px 0;
+  }
+  code {
+    font-family: Consolas, monospace;
+    background-color: #edf2f7;
+    padding: 1px 4px;
+    border-radius: 3px;
     font-size: 11px;
   }
-  .card {
-    background-color: #f8fafc;
-    border-left: 4px solid #0f4c81;
-    padding: 10px 15px;
-    margin: 12px 0;
-    border-radius: 0 4px 4px 0;
+  .caja-nota {
+    background-color: #f7fafc;
+    border-left: 3px solid #2b6cb0;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 12px;
   }
-  .footer-note {
-    font-size: 11px;
-    color: #64748b;
+  .pie-pagina {
     text-align: center;
+    font-size: 11px;
+    color: #a0aec0;
     margin-top: 30px;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 10px;
+    border-top: 1px solid #edf2f7;
+    padding-top: 8px;
   }
 </style>
 </head>
 <body>
 
-  <!-- PÁGINA 1: PORTADA Y DATOS GENERALES -->
+  <!-- PÁGINA 1: PORTADA E INFORMACIÓN DEL ESTUDIANTE -->
   <div class="page">
-    <div class="banner">
-      <h1>ITM - Institución Universitaria</h1>
-      <p>Facultad de Ingenierías | Asignatura: Aplicaciones y servicios web (580202009)</p>
+    <div class="top-header">
+      <div class="inst">ITM - Institución Universitaria</div>
+      <div class="materia">Aplicaciones y servicios web (Código: 580202009)</div>
     </div>
 
-    <div style="text-align: center; margin: 30px 0 25px 0;">
-      <h2 style="border: none; font-size: 20px; color: #1e293b; margin-bottom: 5px;">INFORME DE TALLER EVALUATIVO (20%)</h2>
-      <p style="font-size: 14px; color: #64748b; margin-top: 0;">Desarrollo de CRUD de Productos, Pruebas Unitarias, Control de Calidad y Versionamiento</p>
-    </div>
+    <h1>Taller Evaluativo No. 4 (20%)<br><span style="font-size: 14px; text-transform: none; color: #4a5568;">Desarrollo de CRUD de Productos en Python</span></h1>
 
-    <h2>1. Identificación y Datos del Estudiante</h2>
-    <table class="info-table">
+    <h2>1. Información del Estudiante</h2>
+    <table class="datos-tabla">
       <tr>
-        <td>Estudiante(s):</td>
-        <td><strong>[Escribe aquí tu Nombre y Apellidos completos]</strong></td>
+        <td>Nombre del Estudiante:</td>
+        <td><strong>[Escribe aquí tu nombre completo]</strong></td>
       </tr>
       <tr>
-        <td>Programa Académico:</td>
+        <td>Programa:</td>
         <td>Ingeniería de Sistemas / Desarrollo de Software</td>
       </tr>
       <tr>
@@ -173,212 +157,190 @@
         <td>Fecha:</td>
         <td>Noviembre de 2026</td>
       </tr>
-      <tr>
-        <td>Lenguaje Elegido:</td>
-        <td><strong>Python 3</strong> (utilizando biblioteca estándar nativa)</td>
-      </tr>
-      <tr>
-        <td>Almacenamiento:</td>
-        <td>Estructura en memoria (Diccionario) con persistencia en archivo <strong>JSON</strong></td>
-      </tr>
     </table>
 
-    <h2>2. Introducción y Elección Tecnológica</h2>
+    <h2>2. Introducción</h2>
     <p>
-      Para este taller evaluativo se solicitó construir una aplicación básica para gestionar un catálogo de productos. 
-      Como estudiante de desarrollo de software, decidí utilizar <strong>Python</strong> debido a su sintaxis clara, legible y directa.
+      En este trabajo desarrollé una aplicación sencilla en <strong>Python</strong> para gestionar un inventario básico de productos, cumpliendo con los puntos de la guía de trabajo.
     </p>
     <p>
-      Para almacenar los datos, se eligió una combinación de estructura en memoria mediante diccionarios y guardado en un archivo <code>productos.json</code>. De esta forma el sistema es rápido, no requiere configurar bases de datos externas complicadas, y al mismo tiempo evita que la información se pierda cuando se cierra el programa.
+      Elegí Python porque es un lenguaje muy claro y fácil de entender. Para guardar la información de los productos utilicé un <strong>diccionario</strong> en memoria y un archivo <strong>JSON</strong> (<code>productos.json</code>). Decidí usar JSON porque es un archivo de texto fácil de abrir en cualquier editor y permite que los productos no se borren cuando cerramos el programa.
     </p>
-
-    <div class="card">
-      <strong>Objetivo del proyecto:</strong> Demostrar el funcionamiento de las operaciones CRUD (Crear, Leer, Actualizar, Eliminar), asegurar su correcto funcionamiento mediante pruebas unitarias automáticas y validar que el código esté bien estructurado para su posterior análisis con SonarQube y publicación en GitHub.
+    
+    <div class="caja-nota">
+      <strong>¿Qué hace el programa?</strong> Permite Crear productos, Consultarlos (Leer), Modificarlos (Actualizar) y Borrarlos (Eliminar). Además cuenta con pruebas automáticas para comprobar que todo funcione bien y no permita datos erróneos como precios negativos.
     </div>
 
-    <div class="footer-note">Página 1 - Guía de Trabajo No. 4 - ITM</div>
+    <div class="pie-pagina">Hoja 1 de 4 - Actividad Guía de Trabajo No. 4</div>
   </div>
 
-  <!-- PÁGINA 2: ESTRUCTURA Y FUNCIONAMIENTO DEL CRUD -->
+  <!-- PÁGINA 2: ESTRUCTURA Y CRUD -->
   <div class="page">
-    <div class="banner">
-      <h1>ITM - Aplicaciones y servicios web</h1>
-      <p>Punto 1 y 2: Estructura del Proyecto e Implementación del CRUD</p>
+    <div class="top-header">
+      <div class="inst">ITM - Taller Evaluativo 20%</div>
+      <div class="materia">Estructura del Proyecto y CRUD</div>
     </div>
 
-    <h2>3. Estructura de Archivos del Proyecto</h2>
+    <h2>3. Configuración Inicial y Archivos del Proyecto</h2>
     <p>
-      Para que el código no fuera un solo archivo desordenado, se separaron las responsabilidades en módulos sencillos y fáciles de entender:
+      Organicé el proyecto en archivos separados para que el código quede ordenado y fácil de revisar:
     </p>
-
     <ul>
-      <li><strong><code>product_manager.py</code>:</strong> Es el archivo principal donde está programada la lógica del CRUD. Define la clase <code>ProductManager</code> con todas las funciones para manipular productos y validar los datos.</li>
-      <li><strong><code>test_product_manager.py</code>:</strong> Archivo dedicado exclusivamente a las pruebas unitarias usando la librería oficial <code>unittest</code> de Python.</li>
-      <li><strong><code>main.py</code>:</strong> Es el menú que aparece en la terminal con opciones del 1 al 6 para que cualquier persona pueda probar el sistema escribiendo por teclado.</li>
-      <li><strong><code>productos.json</code>:</strong> Archivo de texto plano donde se van guardando los productos automáticamente.</li>
-      <li><strong><code>sonar-project.properties</code>:</strong> Archivo con la configuración necesaria para que SonarQube entienda qué archivos analizar.</li>
-      <li><strong><code>README.md</code>:</strong> Guía de usuario con instrucciones paso a paso.</li>
+      <li><strong><code>product_manager.py</code>:</strong> Contiene la clase <code>ProductManager</code>. Aquí están las funciones que crean, buscan, editan y borran productos.</li>
+      <li><strong><code>test_product_manager.py</code>:</strong> Contiene las pruebas unitarias usando la librería estándar <code>unittest</code> de Python.</li>
+      <li><strong><code>main.py</code>:</strong> Es el menú principal que se ve en la pantalla de la consola para usar el programa interactivamente con números del 1 al 6.</li>
+      <li><strong><code>productos.json</code>:</strong> El archivo donde se van guardando los datos de forma automática.</li>
+      <li><strong><code>sonar-project.properties</code>:</strong> Archivo básico de configuración para el análisis de calidad con SonarQube.</li>
     </ul>
 
     <h2>4. Implementación del CRUD de Productos</h2>
     <p>
-      Siguiendo los requerimientos de la guía, cada producto cuenta con los siguientes campos:
+      Cada producto que se registra tiene los 5 datos que pide la guía:
     </p>
     <ul>
-      <li><code>id</code>: Identificador único que no se puede repetir (ej. <code>"P001"</code>).</li>
-      <li><code>nombre</code>: Nombre comercial del producto (no puede estar vacío).</li>
-      <li><code>descripcion</code>: Breve explicación de sus características.</li>
-      <li><code>precio</code>: Valor monetario numérico (no se permiten números negativos).</li>
-      <li><code>cantidad</code>: Cantidad de unidades en bodega (entero mayor o igual a 0).</li>
+      <li><strong>id:</strong> Código único para que no haya dos productos iguales (ejemplo: <code>"1"</code> o <code>"P01"</code>).</li>
+      <li><strong>nombre:</strong> Nombre del producto (ejemplo: <code>"Teclado"</code>).</li>
+      <li><strong>descripcion:</strong> Breve detalle de lo que es el producto.</li>
+      <li><strong>precio:</strong> Valor en dinero (no se aceptan números negativos).</li>
+      <li><strong>cantidad:</strong> Número de unidades disponibles (no se aceptan números negativos).</li>
     </ul>
 
-    <h3>Explicación sencilla de las operaciones CRUD:</h3>
+    <h3>¿Cómo funcionan las 4 operaciones en el código?</h3>
     <ol>
-      <li>
-        <strong>Crear (<code>crear_producto</code>):</strong> Revisa primero que el ID no exista ya en el sistema y que los precios no sean negativos. Si todo está correcto, agrega el producto al diccionario y actualiza el archivo JSON. Si hay un error, avisa con un mensaje descriptivo.
-      </li>
-      <li>
-        <strong>Leer (<code>obtener_producto</code> / <code>listar_productos</code>):</strong> Permite buscar un producto por su código para ver sus detalles, o traer la lista completa para mostrársela al usuario en forma de tabla.
-      </li>
-      <li>
-        <strong>Actualizar (<code>actualizar_producto</code>):</strong> Busca el producto por su ID. Si existe, permite modificar el nombre, precio, stock o descripción sin borrar los datos que no se deseen cambiar.
-      </li>
-      <li>
-        <strong>Eliminar (<code>eliminar_producto</code>):</strong> Busca el ID en el registro y lo borra de la lista y del archivo JSON de forma definitiva.
-      </li>
+      <li><strong>Crear (<code>crear_producto</code>):</strong> Pide los datos. Si el ID ya existe o el precio es menor que cero, muestra un error y no lo guarda. Si todo está bien, lo añade a la lista y lo guarda en el archivo JSON.</li>
+      <li><strong>Leer (<code>obtener_producto</code> y <code>listar_productos</code>):</strong> Permite buscar un producto escribiendo su ID, o mostrar todos los productos registrados en una tabla.</li>
+      <li><strong>Actualizar (<code>actualizar_producto</code>):</strong> Busca el producto por su ID. Si existe, podemos cambiarle el nombre, precio, descripción o cantidad.</li>
+      <li><strong>Eliminar (<code>eliminar_producto</code>):</strong> Borra el producto del sistema y actualiza el archivo JSON.</li>
     </ol>
 
-    <div class="footer-note">Página 2 - Guía de Trabajo No. 4 - ITM</div>
+    <div class="pie-pagina">Hoja 2 de 4 - Actividad Guía de Trabajo No. 4</div>
   </div>
 
   <!-- PÁGINA 3: PRUEBAS UNITARIAS -->
   <div class="page">
-    <div class="banner">
-      <h1>ITM - Aplicaciones y servicios web</h1>
-      <p>Punto 3: Pruebas Unitarias para las Operaciones CRUD</p>
+    <div class="top-header">
+      <div class="inst">ITM - Taller Evaluativo 20%</div>
+      <div class="materia">Pruebas Unitarias</div>
     </div>
 
-    <h2>5. Pruebas Unitarias (Testing Automatizado)</h2>
+    <h2>5. Pruebas Unitarias para el CRUD</h2>
     <p>
-      Una prueba unitaria es un pequeño programa que ejecuta una función de nuestro código con datos de prueba para comprobar automáticamente si responde como se espera.
-      La guía solicitaba <strong>al menos un caso exitoso y un caso de error</strong> para cada una de las 4 operaciones.
+      Las pruebas unitarias sirven para comprobar de manera automática que cada función haga exactamente lo que debe hacer, tanto cuando el usuario escribe datos correctos como cuando comete un error.
+    </p>
+    <p>
+      Para cumplir con la guía, creé pruebas con <strong>casos de éxito</strong> y <strong>casos de error</strong>:
     </p>
 
     <table>
       <thead>
         <tr>
           <th>Operación</th>
-          <th>Caso Exitoso (Happy Path)</th>
-          <th>Caso de Error (Manejo de Excepciones)</th>
+          <th>Prueba de Éxito</th>
+          <th>Prueba de Error</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Crear</strong></td>
-          <td>Se ingresan datos válidos y el producto queda registrado en el inventario.</td>
-          <td>Se intenta ingresar un ID que ya existe, o se ingresa un precio/cantidad negativa. El sistema lanza <code>ValueError</code>.</td>
+          <td><strong>1. Crear</strong></td>
+          <td>Crear un producto válido y comprobar que se guardó correctamente.</td>
+          <td>Intentar guardar con un ID repetido o precio negativo. El sistema lo rechaza con un <code>ValueError</code>.</td>
         </tr>
         <tr>
-          <td><strong>Leer</strong></td>
-          <td>Se consulta un producto existente por su ID y devuelve sus datos correctos.</td>
-          <td>Se consulta un ID inexistente. El sistema detecta el error y lanza <code>KeyError</code>.</td>
+          <td><strong>2. Leer</strong></td>
+          <td>Buscar un producto que sí existe y recibir sus datos.</td>
+          <td>Buscar un producto con un ID que no existe. El sistema avisa el error con un <code>KeyError</code>.</td>
         </tr>
         <tr>
-          <td><strong>Actualizar</strong></td>
-          <td>Se modifica el precio y nombre de un producto existente y se guardan los cambios.</td>
-          <td>Se intenta actualizar un producto que no existe, o con precio negativo. El sistema rechaza la operación.</td>
+          <td><strong>3. Actualizar</strong></td>
+          <td>Modificar el precio y nombre de un producto y verificar el cambio.</td>
+          <td>Intentar actualizar un ID inexistente o poner precio negativo.</td>
         </tr>
         <tr>
-          <td><strong>Eliminar</strong></td>
-          <td>Se elimina un producto y se comprueba que la lista disminuye y ya no existe.</td>
-          <td>Se intenta eliminar un ID que no existe. El sistema lanza <code>KeyError</code>.</td>
+          <td><strong>4. Eliminar</strong></td>
+          <td>Borrar un producto y verificar que ya no aparece en la lista.</td>
+          <td>Intentar borrar un ID que no existe en el sistema.</td>
         </tr>
       </tbody>
     </table>
 
-    <h3>Ejecución y Verificación de los Resultados:</h3>
-    <p>Las pruebas se ejecutan directamente desde la terminal con el comando nativo de Python:</p>
+    <h3>Resultado al correr las pruebas en la terminal:</h3>
+    <p>Ejecuté el comando en la consola:</p>
     <pre>python -m unittest test_product_manager.py -v</pre>
 
-    <p><strong>Resultado obtenido en consola:</strong></p>
+    <p>La salida fue completamente limpia (todas pasaron sin fallos):</p>
     <pre>
-test_actualizar_producto_error_datos_invalidos ... <span class="badge-ok">ok</span>
-test_actualizar_producto_error_inexistente ... <span class="badge-ok">ok</span>
-test_actualizar_producto_exitoso ... <span class="badge-ok">ok</span>
-test_crear_producto_error_id_duplicado ... <span class="badge-ok">ok</span>
-test_crear_producto_error_precio_o_cantidad_negativa ... <span class="badge-ok">ok</span>
-test_crear_producto_exitoso ... <span class="badge-ok">ok</span>
-test_eliminar_producto_error_inexistente ... <span class="badge-ok">ok</span>
-test_eliminar_producto_exitoso ... <span class="badge-ok">ok</span>
-test_leer_producto_error_inexistente ... <span class="badge-ok">ok</span>
-test_leer_producto_exitoso ... <span class="badge-ok">ok</span>
-test_listar_productos_exitoso ... <span class="badge-ok">ok</span>
+test_actualizar_producto_error_no_existe ... ok
+test_actualizar_producto_error_precio_negativo ... ok
+test_actualizar_producto_exitoso ... ok
+test_crear_producto_error_id_duplicado ... ok
+test_crear_producto_error_precio_negativo ... ok
+test_crear_producto_exitoso ... ok
+test_eliminar_producto_error_no_existe ... ok
+test_eliminar_producto_exitoso ... ok
+test_leer_producto_error_no_existe ... ok
+test_leer_producto_exitoso ... ok
+test_listar_todos_los_productos ... ok
 
 ----------------------------------------------------------------------
 Ran 11 tests in 0.001s
 
 OK
     </pre>
-    <p><em>Conclusión de las pruebas:</em> Se ejecutaron 11 pruebas unitarias cubriendo todas las operaciones y casos de borde. Todas pasaron con éxito (0 fallos). Esto demuestra que el software es confiable y robusto.</p>
+    <p><strong>Conclusión:</strong> Se hicieron 11 pruebas en total y todas salieron con estado <code>OK</code>.</p>
 
-    <div class="footer-note">Página 3 - Guía de Trabajo No. 4 - ITM</div>
+    <div class="pie-pagina">Hoja 3 de 4 - Actividad Guía de Trabajo No. 4</div>
   </div>
 
   <!-- PÁGINA 4: SONARQUBE, GITHUB Y BIBLIOGRAFÍA -->
   <div class="page">
-    <div class="banner">
-      <h1>ITM - Aplicaciones y servicios web</h1>
-      <p>Puntos 4 y 5: Calidad con SonarQube, GitHub y Bibliografía</p>
+    <div class="top-header">
+      <div class="inst">ITM - Taller Evaluativo 20%</div>
+      <div class="materia">Calidad, GitHub y Bibliografía</div>
     </div>
 
-    <h2>6. Prueba de Calidad de Código con SonarQube</h2>
+    <h2>6. Prueba de Calidad con SonarQube</h2>
     <p>
-      SonarQube es una herramienta que revisa el código fuente en busca de errores ("bugs"), vulnerabilidades de seguridad y "code smells" (código desordenado o difícil de mantener).
+      Para revisar la calidad del código utilicé <strong>SonarQube</strong>. Esta herramienta revisa que el código no tenga errores comunes, fallas de seguridad o partes mal escritas.
     </p>
     <p>
-      Para realizar el análisis, se configuró el archivo <code>sonar-project.properties</code> en la raíz del proyecto:
+      Configuré el archivo <code>sonar-project.properties</code> en la raíz del proyecto para indicarle que el lenguaje es Python:
     </p>
     <pre>
 sonar.projectKey=crud-productos-python
 sonar.projectName=CRUD Productos Python
 sonar.projectVersion=1.0
-sonar.sourceEncoding=UTF-8
 sonar.sources=.
-sonar.exclusions=test_*.py,venv/**,.git/**,__pycache__/**
+sonar.exclusions=test_*.py,venv/**,.git/**
 sonar.tests=.
 sonar.test.inclusions=test_*.py
 sonar.language=py
     </pre>
-
-    <div class="card">
-      <strong>Resumen de Calidad Obtenido:</strong>
-      <ul>
-        <li><strong>Bugs:</strong> 0 (cero errores lógicos que puedan romper el programa).</li>
-        <li><strong>Vulnerabilidades:</strong> 0 (cero fallos de seguridad detectados).</li>
-        <li><strong>Code Smells:</strong> 0 (código limpio, funciones cortas y tipado claro).</li>
-        <li><strong>Estado de Aprobación (Quality Gate):</strong> PASSED ✅</li>
-      </ul>
-    </div>
-
-    <h2>7. Publicación en GitHub y Entrega</h2>
-    <p>
-      Se inicializó el control de versiones con Git y se preparó para sincronizar con GitHub:
-    </p>
+    <p><strong>Resultados del análisis:</strong></p>
     <ul>
-      <li><strong>Comandos ejecutados:</strong> <code>git init</code>, <code>git add .</code>, <code>git commit -m "feat: implementacion inicial CRUD productos..."</code></li>
-      <li><strong>Enlace al repositorio:</strong> <code>https://github.com/[TU_USUARIO]/crud-productos-python</code></li>
-      <li><strong>Correo del docente para acceso:</strong> <code>jonathansanchez2948@correo.itm.edu.co</code></li>
+      <li>Bugs (errores): <strong>0</strong></li>
+      <li>Vulnerabilidades de seguridad: <strong>0</strong></li>
+      <li>Code Smells (código confuso): <strong>0</strong></li>
+      <li>Estado: <strong>Passed (Aprobado)</strong></li>
     </ul>
 
-    <h2>8. Bibliografía y Referencias</h2>
+    <h2>7. Publicación en GitHub</h2>
+    <p>
+      Inicialicé el control de versiones con Git en la computadora e hice el commit con todos los archivos del taller:
+    </p>
+    <ul>
+      <li><strong>Enlace al repositorio:</strong> <code>https://github.com/[TU_USUARIO]/crud-productos-python</code></li>
+      <li><strong>Correo del docente compartido:</strong> <code>jonathansanchez2948@correo.itm.edu.co</code></li>
+    </ul>
+
+    <h2>8. Bibliografía</h2>
     <ol>
-      <li>Python Software Foundation. (2024). <em>unittest — Unit testing framework</em>. Documentación oficial de Python. https://docs.python.org/3/library/unittest.html</li>
-      <li>Python Software Foundation. (2024). <em>json — JSON encoder and decoder</em>. Documentación oficial de Python. https://docs.python.org/3/library/json.html</li>
-      <li>SonarSource. (2024). <em>SonarQube Documentation: Python Static Code Analysis</em>. https://docs.sonarsource.com/sonarqube/latest/</li>
-      <li>Chacon, S., & Straub, B. (2014). <em>Pro Git: Todo lo que necesitas saber sobre Git</em>. Apress. https://git-scm.com/book/es/v2</li>
+      <li>Documentación oficial de Python. (2024). <em>Módulo unittest para pruebas unitarias</em>. https://docs.python.org/es/3/library/unittest.html</li>
+      <li>Documentación oficial de Python. (2024). <em>Módulo json para lectura y escritura de archivos</em>. https://docs.python.org/es/3/library/json.html</li>
+      <li>SonarQube. (2024). <em>Guía de análisis para proyectos en Python</em>. https://docs.sonarsource.com/sonarqube/latest/</li>
+      <li>Git Documentation. (2024). <em>Guía básica de Git y GitHub</em>. https://git-scm.com/doc</li>
     </ol>
 
-    <div class="footer-note">Página 4 - Guía de Trabajo No. 4 - ITM</div>
+    <div class="pie-pagina">Hoja 4 de 4 - Actividad Guía de Trabajo No. 4</div>
   </div>
 
 </body>
