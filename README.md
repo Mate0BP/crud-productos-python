@@ -1,7 +1,10 @@
 # Taller Evaluativo 20% - CRUD de Productos en Python
 **Asignatura:** Aplicaciones y servicios web  
 **Institución:** ITM - Institución Universitaria  
-**Docente:** Jonathan Sánchez Giraldo (jonathansanchez2948@correo.itm.edu.co)
+**Docente:** Jonathan Sánchez Giraldo (jonathansanchez2948@correo.itm.edu.co)  
+**Estudiante:** Mateo Palacios (`Mate0BP`)  
+
+📄 **[Ver / Descargar Informe Final en PDF](INFORME_TALLER_CRUD.pdf)**
 
 ---
 
