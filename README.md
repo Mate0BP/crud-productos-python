@@ -82,7 +82,7 @@ python main.py
 2. Crear un repositorio público en GitHub (por ejemplo, `crud-productos-python`).
 3. Vincular y subir:
    ```bash
-   git remote add origin https://github.com/TU_USUARIO/crud-productos-python.git
+   git remote add origin https://github.com/Mate0BP/crud-productos-python.git
    git branch -M main
    git push -u origin main
    ```
