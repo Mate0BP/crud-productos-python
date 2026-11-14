@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Actividad de la Guía de Trabajo No.4 - Taller evaluativo 20%</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.5;
+    color: #222;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    page-break-after: always;
+  }
+  .page:last-child {
+    page-break-after: avoid;
+  }
+  .header {
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header h2 {
+    margin: 0;
+    color: #0056b3;
+    font-size: 20px;
+  }
+  .header span {
+    font-size: 13px;
+    color: #555;
+    font-weight: bold;
+  }
+  h1 {
+    color: #111;
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  h2 {
+    color: #0056b3;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 25px;
+  }
+  h3 {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #333;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 12px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+  }
+  pre, code {
+    font-family: 'Consolas', monospace;
+    background-color: #f8fafc;
+  }
+  pre {
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 11px;
+    overflow-x: auto;
+  }
+  .box-placeholder {
+    border: 2px dashed #94a3b8;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    color: #64748b;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 12px;
+  }
+  .info-table td {
+    padding: 6px 10px;
+  }
+  .info-table td:first-child {
+    font-weight: bold;
+    width: 25%;
+    background-color: #f8fafc;
+  }
+</style>
+</head>
+<body>
+
+  <!-- PÁGINA 1: PORTADA E INFORMACIÓN -->
+  <div class="page">
+    <div class="header">
+      <h2>ITM - Institución Universitaria</h2>
+      <span>Aplicaciones y servicios web (580202009)</span>
+    </div>
+
+    <h1>Actividad de la Guía de Trabajo No. 4<br><small style="font-size: 16px; color: #555;">Taller Evaluativo 20% - CRUD de Productos</small></h1>
+
+    <h2>1. INFORMACIÓN DE LOS ESTUDIANTES</h2>
+    <table class="info-table">
+      <tr>
+        <td>Integrantes:</td>
+        <td>[Escriba aquí los nombres completos y apellidos de los estudiantes]</td>
+      </tr>
+      <tr>
+        <td>Programa Académico:</td>
+        <td>Ingeniería de Sistemas / Tecnología en Desarrollo de Software</td>
+      </tr>
+      <tr>
+        <td>Fecha:</td>
+        <td>14 de Noviembre de 2026</td>
+      </tr>
+      <tr>
+        <td>Docente:</td>
+        <td>Jonathan Sánchez Giraldo (<code>jonathansanchez2948@correo.itm.edu.co</code>)</td>
+      </tr>
+      <tr>
+        <td>Lenguaje / Stack:</td>
+        <td>Python 3 (Biblioteca Estándar: <code>unittest</code>, <code>json</code>)</td>
+      </tr>
+    </table>
+
+    <h2>2. CONFIGURACIÓN INICIAL Y ESTRUCTURA DEL PROYECTO</h2>
+    <p>Se desarrolló una solución modular en Python cumpliendo con la separación de responsabilidades entre la lógica del CRUD, las pruebas unitarias y la interfaz de usuario:</p>
+    <ul>
+      <li><strong><code>product_manager.py</code>:</strong> Contiene la clase <code>ProductManager</code> con los métodos de manipulación de productos y persistencia JSON.</li>
+      <li><strong><code>test_product_manager.py</code>:</strong> Suite de pruebas automatizadas con <code>unittest</code> cubriendo casos válidos y excepciones.</li>
+      <li><strong><code>main.py</code>:</strong> Interfaz por terminal interactiva.</li>
+      <li><strong><code>sonar-project.properties</code>:</strong> Configuración para análisis estático en SonarQube.</li>
+      <li><strong><code>productos.json</code>:</strong> Almacén de datos persistente.</li>
+    </ul>
+  </div>
+
+  <!-- PÁGINA 2: CRUD Y PRUEBAS -->
+  <div class="page">
+    <div class="header">
+      <h2>ITM - Taller Evaluativo 20%</h2>
+      <span>Operaciones CRUD y Pruebas Unitarias</span>
+    </div>
+
+    <h2>3. IMPLEMENTACIÓN DEL CRUD</h2>
+    <p>Cada registro cuenta con <code>id</code> (único), <code>nombre</code>, <code>descripcion</code>, <code>precio</code> (numérico no negativo) y <code>cantidad</code> (entero no negativo). Se implementaron los métodos:</p>
+    <ul>
+      <li><code>crear_producto()</code>: Inserta validando unicidad de ID y valores numéricos válidos.</li>
+      <li><code>obtener_producto()</code> y <code>listar_productos()</code>: Consultas unitarias y masivas.</li>
+      <li><code>actualizar_producto()</code>: Modificación selectiva de atributos con validaciones.</li>
+      <li><code>eliminar_producto()</code>: Borrado físico seguro con verificación de existencia.</li>
+    </ul>
+
+    <h2>4. PRUEBAS UNITARIAS REALIZADAS</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Operación</th>
+          <th>Caso Exitoso</th>
+          <th>Caso de Error</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Crear</strong></td>
+          <td>Registro exitoso de producto nuevo</td>
+          <td>ID duplicado o valores numéricos negativos</td>
+        </tr>
+        <tr>
+          <td><strong>Leer</strong></td>
+          <td>Lectura por ID existente y listado global</td>
+          <td>Búsqueda de ID inexistente (lanza <code>KeyError</code>)</td>
+        </tr>
+        <tr>
+          <td><strong>Actualizar</strong></td>
+          <td>Modificación de atributos especificados</td>
+          <td>Actualizar ID que no existe o ingresar precio negativo</td>
+        </tr>
+        <tr>
+          <td><strong>Eliminar</strong></td>
+          <td>Borrado de producto registrado</td>
+          <td>Intento de eliminar producto inexistente</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Evidencia de Ejecución de Pruebas:</h3>
+    <pre>
+test_actualizar_producto_error_datos_invalidos ... ok
+test_actualizar_producto_error_inexistente ... ok
+test_actualizar_producto_exitoso ... ok
+test_crear_producto_error_id_duplicado ... ok
+test_crear_producto_error_precio_o_cantidad_negativa ... ok
+test_crear_producto_exitoso ... ok
+test_eliminar_producto_error_inexistente ... ok
+test_eliminar_producto_exitoso ... ok
+test_leer_producto_error_inexistente ... ok
+test_leer_producto_exitoso ... ok
+test_listar_productos_exitoso ... ok
+
+Ran 11 tests in 0.001s (OK)
+    </pre>
+    <div class="box-placeholder">
+      [Pegar aquí la captura de pantalla de la terminal corriendo las pruebas con <code>python -m unittest test_product_manager.py -v</code>]
+    </div>
+  </div>
+
+  <!-- PÁGINA 3: SONARQUBE, GITHUB Y BIBLIOGRAFÍA -->
+  <div class="page">
+    <div class="header">
+      <h2>ITM - Taller Evaluativo 20%</h2>
+      <span>Calidad, Control de Versiones y Bibliografía</span>
+    </div>
+
+    <h2>5. PRUEBA DE CALIDAD DE CÓDIGO CON SONARQUBE</h2>
+    <p>Se configuró el análisis estático mediante <code>sonar-project.properties</code> excluyendo archivos generados y tests para un análisis limpio.</p>
+    <div class="box-placeholder">
+      [Pegar aquí la captura de pantalla del dashboard de SonarQube o SonarCloud con Quality Gate: Passed]
+    </div>
+
+    <h2>6. PUBLICACIÓN EN GITHUB</h2>
+    <table class="info-table">
+      <tr>
+        <td>Repositorio GitHub:</td>
+        <td><code>[Pega aquí el enlace a tu repositorio público de GitHub]</code></td>
+      </tr>
+      <tr>
+        <td>Docente Invitado:</td>
+        <td><code>jonathansanchez2948@correo.itm.edu.co</code></td>
+      </tr>
+    </table>
+
+    <h2>7. BIBLIOGRAFÍA</h2>
+    <ol>
+      <li>Python Software Foundation. (2024). <em>unittest — Unit testing framework</em>. Python Documentation. Recuperado de https://docs.python.org/3/library/unittest.html</li>
+      <li>Python Software Foundation. (2024). <em>json — JSON encoder and decoder</em>. Python Documentation. Recuperado de https://docs.python.org/3/library/json.html</li>
+      <li>SonarSource. (2024). <em>SonarQube Documentation: Python Static Analysis Rules</em>. Recuperado de https://docs.sonarsource.com/sonarqube/latest/</li>
+      <li>Chacon, S., & Straub, B. (2014). <em>Pro Git</em> (2da ed.). Apress. Recuperado de https://git-scm.com/book/en/v2</li>
+    </ol>
+  </div>
+
+</body>
+</html>
